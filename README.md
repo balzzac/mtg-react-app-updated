@@ -1,5 +1,6 @@
 # Solution Notes
-Live demo: https://mtgcodechallenge.netlify.com/
+Live demo (original): https://mtgcodechallenge.netlify.com/
+Live demo: (updated): https://mtgcodingchallenge-updated.netlify.com/
 
 ## Environment:
 * Used: `create-react-app`
