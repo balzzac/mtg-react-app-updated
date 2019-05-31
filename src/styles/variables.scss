@@ -1,0 +1,42 @@
+/// @name variables.scss
+/// @group variables
+
+/* Colors */
+$main-dark-color: #202020;
+$color-transparent: transparent;
+
+/* Media query break points based on design and content*/
+/// @name major break points for design
+/// @require px (or any absolute length unit) same as @alias base font variables,
+/// because it is used @alias fluid-type()
+$bp-s: 740px; // major break point for "small screen" design
+$bp-l: 1200px; // major break point for "large screen" design
+$bp-xl: 1600px; // minor break point for "x-large screen" typography
+
+/* Typography */
+/// @name base font variables
+/// @require px (or any absolute length unit) same as
+/// @alias major break points for design, because it is used
+/// @alias fluid-type()
+$base-font-min: 18px;
+$base-font-max: 20px;
+
+$mod_m: 1.1; // modular scale base for mobile screen
+$mod_d: 1.25; // modular scale base for desktop
+
+/* Spaces */
+/// margins and paddings
+$space-default: 1rem;
+$space-xs: 0.25rem;
+$space-s: 0.5rem;
+$space-m: 1rem;
+$space-l: 2rem;
+$space-xl: 4rem;
+
+/* Fixed sizes */
+$header-height: 80px;
+
+/* Accessibility Requirements */
+$line-height: 1.5em; // WCAG 2.1 Success Criterion 1.4.12 Text Spacing AA: recommendation is min 1.5em
+$letter-spacing: 0.12em; // WCAG 2.1 Success Criterion 1.4.12 Text Spacing AA: recommendation is min 0.12em
+$min-target-size: 44px; // WCAG 2.1 Success Criterion 2.5.5 Target Size AAA: recommendation is min 44px

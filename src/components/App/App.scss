@@ -1,0 +1,134 @@
+@charset 'utf-8';
+
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+/* GENERIC */
+/* basic normalization */
+* {
+  border: none;
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  outline: none;
+}
+
+/* ========================================================================= */
+
+/* GLOBAL */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Accessibility Requirements */
+p,
+h1,
+h2 {
+  padding-bottom: 2em; // WCAG 2.1 Success Criterion 1.4.12 Text Spacing AA: recommendation is min 2em
+}
+
+/* ................................. */
+
+body {
+  background: #fafafa;
+  min-width: 320px;
+}
+
+/* ========================================================================= */
+
+/* TYPOGRAPHY */
+@import url('https://fonts.googleapis.com/css?family=Jim+Nightshade&display=swap');
+@font-face {
+  font-family: 'Jim Nightshade', cursive;
+  font-display: auto;
+  src: local('Jim Nightshade'),
+    url('https://fonts.googleapis.com/css?family=Jim+Nightshade&display=swap');
+}
+
+/* classes t0, t1, t2, t3, s1, s2 and classes with t- prefix */
+/* root font */
+html {
+  @include fluid-type($bp-s, $bp-xl, $base-font-min, $base-font-max);
+  color: $main-dark-color;
+  font-family: ('Jim Nightshade', sans-serif);
+  font-style: normal;
+  font-weight: 400;
+}
+
+a,
+a:link,
+a:visited,
+a:focus,
+a:hover,
+a:active {
+  color: $main-dark-color;
+  text-decoration: none;
+}
+
+/* base font */
+.t0 {
+  @include fluid-type($bp-s, $bp-xl, $base-font-min, $base-font-max);
+}
+
+/* largest font-size */
+.t1 {
+  @include fluid-type(
+    $bp-s,
+    $bp-xl,
+    $mod_m * $mod_m * $mod_m * $base-font-min,
+    $mod_d * $mod_d * $mod_d * $base-font-max
+  );
+}
+
+/* second largest font-size */
+.t2 {
+  @include fluid-type(
+    $bp-s,
+    $bp-xl,
+    $mod_m * $mod_m * $base-font-min,
+    $mod_d * $mod_d * $base-font-max
+  );
+}
+
+/* third largest font-size */
+.t3 {
+  @include fluid-type(
+    $bp-s,
+    $bp-xl,
+    $mod_m * $base-font-min,
+    $mod_d * $base-font-max
+  );
+}
+
+/* first font-size smaller that base font-size */
+.s1 {
+  @include fluid-type(
+    $bp-s,
+    $bp-xl,
+    $base-font-min / $mod_m,
+    $base-font-max / $mod_d
+  );
+}
+
+/* second font-size smaller that base font-size */
+.s2 {
+  @include fluid-type(
+    $bp-s,
+    $bp-xl,
+    $base-font-min / ($mod_m * $mod_m),
+    $base-font-max / ($mod_d * $mod_d)
+  );
+}
+
+/* third font-size smaller that base font-size */
+.s3 {
+  @include fluid-type(
+    $bp-s,
+    $bp-xl,
+    $base-font-min / ($mod_m * $mod_m * $mod_m),
+    $base-font-max / ($mod_d * $mod_d * $mod_d)
+  );
+}
+
+/* ................................. */

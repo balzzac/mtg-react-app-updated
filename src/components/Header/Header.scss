@@ -1,0 +1,28 @@
+@charset 'utf-8';
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.l-header {
+  @extend %flex-row;
+  @include justify-content(center);
+  height: $header-height;
+
+  &--logo {
+    height: 60px;
+  }
+  &--link {
+    position: absolute;
+    right: $space-m;
+    top: calc(30px);
+  }
+}
+
+.a-header {
+  background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
+  &--link {
+    text-decoration: underline;
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}

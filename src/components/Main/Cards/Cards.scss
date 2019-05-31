@@ -1,0 +1,10 @@
+@charset 'utf-8';
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.l-cards {
+  @extend %flex-row;
+  @include flex-wrap(wrap);
+  @include justify-content(space-around);
+  padding: $space-m;
+}

@@ -1,0 +1,26 @@
+GET https://api.magicthegathering.io/v1/cards?type=creature&&pageSize=20
+content-type: application/json
+
+###
+
+GET https://api.magicthegathering.io/v1/cards?type=creature&&page=1&&pageSize=20&&orderBy=name
+content-type: application/json
+
+###
+
+GET https://api.magicthegathering.io/v1/cards?type=creature&&page=2&&pageSize=20&&orderBy=name
+content-type: application/json
+
+###
+
+GET https://api.magicthegathering.io/v1/cards?type=creature&&page=3&&pageSize=20&&orderBy=name
+content-type: application/json
+
+###
+
+GET https://api.magicthegathering.io/v1/cards?type=creature&&page=2&&pageSize=100&&orderBy=name
+content-type: application/json
+
+###
+GET https://api.magicthegathering.io/v1/cards?type=creature&&id=63241c80-9e3b-52e8-ab29-a211798665c8
+content-type: application/json

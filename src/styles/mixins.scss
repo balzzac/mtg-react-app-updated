@@ -1,0 +1,392 @@
+/// @name mixins.scss
+/// @group mixins
+
+@charset 'utf-8';
+@import './variables';
+
+/// border - mixin for border layout,
+/// @name border($width)
+/// @param {string} $width - width
+/// @group layout border
+@mixin border($width: 1px) {
+  border: $width solid $color-transparent;
+}
+
+/// border-top - mixin for border-top,
+/// @name border-top($width)
+/// @param {string} $width - width
+/// @group border
+@mixin border-top($width: 1px) {
+  border-top: $width solid $color-transparent;
+}
+
+/// border-bottom - mixin for border-bottom,
+/// @name border-bottom($width)
+/// @param {string} $width - width.
+/// @group border
+@mixin border-bottom($width: 1px) {
+  border-bottom: $width solid $color-transparent;
+}
+
+/// border-left - mixin for border-left,
+/// @name border-left($width)
+/// @param {string} $width - width
+/// @group border
+@mixin border-left($width: 1px) {
+  border-left: $width solid $color-transparent;
+}
+
+/// border-right - mixin for border-right,
+/// @name border-right($width)
+/// @param {string} $width - width
+/// @group border
+@mixin border-right($width: 1px) {
+  border-right: $width solid $color-transparent;
+}
+
+/* ................................. */
+
+/// border-radius - mixin for border-radius, where
+/// `background-clip: padding-box` stops bg color from leaking outside the border
+/// @name border-radius($radius)
+/// @param {string} $radius - radius
+/// @group cosmetic border
+@mixin border-radius($radius) {
+  background-clip: padding-box;
+  border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+/* ................................. */
+
+/// box mixin - height & width of a box
+/// @name box
+/// @param {string} $height - height of a box
+/// @param {string} $width - width of a box, if not present equal to $height
+/// @group layout
+@mixin box($height, $width: $height) {
+  height: $height;
+  width: $width;
+}
+
+/* ................................. */
+/// box-shadow mixin. it adds 2 shadows
+/// that creates nice effect of more realistic shadow
+/// @name box-shadow($x: 0, $y: 1rem, $blur-radius: 1rem)
+/// @param {string} $x - offset-x, default to 0
+/// @param {string} $y - offset-y, default to 1rem
+/// @param {string} $blur-radius - blur-radius, default to 1rem
+/// @group cosmetic
+@mixin box-shadow($x: 0, $y: 1rem, $blur-radius: 1rem) {
+  $color-shadow: rgba($main-dark-color, 0.5);
+  @if $x == 0 {
+    box-shadow: $x $y $blur-radius (-#{$blur-radius}) $color-shadow,
+      $x $y $blur-radius $color-shadow;
+  } @else {
+    box-shadow: $x $y $blur-radius $color-shadow;
+  }
+}
+
+/* ................................. */
+
+/// flex - mixins for flex layout
+/// @group flex layout
+
+/// flexbox display
+/// @name flexbox()
+/// @param {string} $display - flex | inline-flex
+/// @group flex
+@mixin flexbox($display) {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: $display;
+}
+
+/// the 'flex' shorthand - applies to: flex items
+/// @name flex($values)
+/// @param {string} $values - <positive-number>, initial, auto, or none
+/// @group flex
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex: $values;
+  -webkit-flex: $values;
+  -ms-flex: $values;
+  flex: $values;
+}
+
+/// flex flow direction - applies to: flex containers
+/// @name flex-direction($direction)
+/// @param {string} $direction - row | row-reverse | column | column-reverse
+/// @group flex
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+  -moz-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+/// flex line wrapping  - applies to: flex containers
+/// @name flex-wrap($wrap)
+/// @param {string} $wrap - nowrap | wrap | wrap-reverse
+/// @group flex
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  -moz-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+/// flex direction and wrap - applies to: flex containers
+/// @name flex-flow($flow)
+/// @param {string} $flow - <flex-direction> || <flex-wrap>
+/// @group flex
+@mixin flex-flow($flow) {
+  -webkit-flex-flow: $flow;
+  -moz-flex-flow: $flow;
+  -ms-flex-flow: $flow;
+  flex-flow: $flow;
+}
+
+/// display order - applies to: flex items
+/// @name flex-order($val)
+/// @param {number} $val - <integer>
+/// @group flex
+@mixin flex-order($val) {
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
+  order: $val;
+}
+
+/// flex grow factor - applies to: flex items
+/// @name flex-grow($grow)
+/// @param {number} $grow - <number>
+/// @group flex
+@mixin flex-grow($grow) {
+  -webkit-flex-grow: $grow;
+  -moz-flex-grow: $grow;
+  -ms-flex-grow: $grow;
+  flex-grow: $grow;
+}
+
+/// flex shrink - applies to: flex item shrink factor
+/// @name flex-shrink($shrink)
+/// @param {number} $shrink - <number>
+/// @group flex
+@mixin flex-shrink($shrink) {
+  -webkit-flex-shrink: $shrink;
+  -moz-flex-shrink: $shrink;
+  -ms-flex-shrink: $shrink;
+  flex-shrink: $shrink;
+}
+
+/// flex basis - the initial main size of the flex item - applies to: flex items
+/// @name flex-basis($width)
+/// @param {string} $width - <width>
+/// @group flex
+@mixin flex-basis($width) {
+  -webkit-flex-basis: $width;
+  -moz-flex-basis: $width;
+  -ms-flex-basis: $width;
+  flex-basis: $width;
+}
+
+/// axis alignment - applies to: flex containers
+/// @name justify-content($justify)
+/// @param {string} $justify - flex-start | flex-end | center | space-between | space-around
+/// @group flex
+@mixin justify-content($justify) {
+  -webkit-justify-content: $justify;
+  -moz-justify-content: $justify;
+  -ms-justify-content: $justify;
+  justify-content: $justify;
+  -ms-flex-pack: $justify;
+}
+
+/// packing flex lines - applies to: multi-line flex containers
+/// @name align-content($align)
+/// @param {string} $align - flex-start | flex-end | center | space-between | space-around | stretch
+/// @group flex
+@mixin align-content($align) {
+  -webkit-align-content: $align;
+  -moz-align-content: $align;
+  -ms-align-content: $align;
+  align-content: $align;
+}
+
+/// cross-axis alignment - applies to: flex containers
+/// @name align-items($align)
+/// @param {string} $align - flex-start | flex-end | center | baseline | stretch
+/// @group flex
+@mixin align-items($align) {
+  -webkit-align-items: $align;
+  -moz-align-items: $align;
+  -ms-align-items: $align;
+  align-items: $align;
+}
+
+/// cross-axis alignment - applies to: flex items
+/// @name align-self($align)
+/// @param {string} $align - auto | flex-start | flex-end | center | baseline | stretch
+/// @group flex
+@mixin align-self($align) {
+  -webkit-align-self: $align;
+  -moz-align-self: $align;
+  -ms-align-self: $align;
+  align-self: $align;
+}
+
+/* ................................. */
+
+/// text inputs placeholder mixin
+/// @name input-placeholder
+/// @content
+/// @example
+///  ```
+///  input,
+///  textarea {
+///      @include input-placeholder {
+///          color: $main-dark-color;
+///      }
+///  }
+///  ```
+/// @group inputs
+@mixin input-placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::placeholder {
+    @content;
+  }
+}
+
+/* ................................. */
+
+/* ................................. */
+
+/// media query mixin for different screen sizes
+/// @name for-size($range)
+/// @content
+/// @param {string} $range - name for screen size
+/// @example
+/// ```
+///   .my-box {
+///     padding: 10px;
+///
+///     @include for-size(s-only) {
+///       padding: 5px;
+///     }
+///   }
+/// ```
+/// @group layout
+@mixin for-size($range) {
+  @if $range == s-only {
+    @media (max-width: #{$bp-s - 1}) {
+      @content;
+    }
+  } @else if $range == m-only {
+    @media (min-width: $bp-s) and (max-width: #{$bp-l - 1}) {
+      @content;
+    }
+  } @else if $range == m-up {
+    @media (min-width: $bp-s) {
+      @content;
+    }
+  } @else if $range == l {
+    @media (min-width: $bp-l) {
+      @content;
+    }
+  }
+}
+
+/* ................................. */
+
+/// strip-unit function @alias fluid-type mixin
+/// @name strip-unit($value)
+/// @param {string} $value - size value
+/// @return {number} - size value w/o unit
+/// @group typography
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+/// liquid typography mixin
+/// @name fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size)
+/// @param {string} $min-vw - min screen width
+/// @param {string} $max-vw - max screen width
+/// @param {string} $min-font-size - min base font size at $min-vw
+/// @param {string} $max-font-size - max base font size at $max-vw
+/// @require same units for width and base font
+/// @example
+///  ```
+///  html {
+///    @include fluid-type($bp-s, $bp-l, $base-font-min, $base-font-max);
+///  }
+///  ```
+/// @group typography
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: $letter-spacing;
+      line-height: $line-height;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: $letter-spacing;
+        line-height: $line-height;
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: $letter-spacing;
+        line-height: $line-height;
+      }
+    }
+  }
+}
+
+/* ................................. */
+
+/* CLASSES */
+%flex-row {
+  @include flexbox(flex);
+  @include flex-direction(row);
+  @include flex-wrap(nowrap);
+  @include justify-content(flex-start);
+  @include align-items(center);
+}
+
+%flex-column {
+  @include flexbox(flex);
+  @include flex-direction(column);
+  @include flex-wrap(nowrap);
+  @include justify-content(flex-start);
+  @include align-items(center);
+}

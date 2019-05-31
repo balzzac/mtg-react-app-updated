@@ -1,0 +1,80 @@
+@charset 'utf-8';
+@import '../../../../styles/mixins';
+@import '../../../../styles/variables';
+
+.l-card {
+  @extend %flex-column;
+  @include box(480px, 280px);
+  @include border-radius(10px);
+  @include justify-content(space-between);
+  box-sizing: border-box;
+  margin: $space-s;
+  min-height: 480px;
+  max-height: 480px;
+  padding: $space-s;
+
+  &--name {
+    @extend %flex-row;
+    @include justify-content(center);
+    box-sizing: border-box;
+    max-width: calc(280px - #{$space-s} * 2);
+    padding: $space-xs;
+  }
+  &--image {
+    @include border-radius(10px);
+  }
+  &--image-sub {
+    @extend %flex-column;
+    @include box(280px, 200px);
+    @include justify-content(center);
+  }
+
+  &--original-type {
+    @extend %flex-row;
+    @include justify-content(center);
+    box-sizing: border-box;
+    max-width: calc(280px - #{$space-s} * 2);
+    padding: $space-xs;
+  }
+  &--footer {
+    @extend %flex-row;
+    @include justify-content(space-between);
+    box-sizing: border-box;
+    width: calc(280px - #{$space-s} * 2);
+    padding: 0 $space-xs;
+    &--set-name {
+      text-align: right;
+    }
+  }
+}
+
+.a-card {
+  @include box-shadow();
+  background-image: linear-gradient(
+    to right,
+    #eea2a2 0%,
+    #bbc1bf 19%,
+    #57c6e1 42%,
+    #b49fda 79%,
+    #7ac5d8 100%
+  );
+
+  &.has-black-bg {
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+    & > * {
+      color: #ffffff;
+    }
+  }
+  &.has-blue-bg {
+    background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
+  }
+  &.has-green-bg {
+    background-image: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
+  }
+  &.has-red-bg {
+    background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
+  }
+  &.has-white-bg {
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  }
+}

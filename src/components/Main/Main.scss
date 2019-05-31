@@ -1,0 +1,37 @@
+@charset 'utf-8';
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.l-main {
+  @extend %flex-column;
+
+  box-sizing: border-box;
+  min-height: calc(100vh - #{$header-height});
+  padding: $space-m;
+}
+
+.l-controls {
+  @extend %flex-row;
+  @include flex-wrap(wrap);
+  @include justify-content(center);
+}
+
+.l-input {
+  @include box($min-target-size, 250px);
+  @include border-radius(10px);
+  @include border(1px);
+  background: #ffffff;
+  box-sizing: border-box;
+  margin-left: $space-m;
+  padding: $space-xs $space-m;
+
+  &--label {
+    @extend %flex-row;
+    margin: $space-m;
+  }
+}
+
+.a-input {
+  border-color: $main-dark-color;
+  font-family: ('Jim Nightshade', sans-serif);
+}
